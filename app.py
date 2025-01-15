@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 import pickle
@@ -7,10 +8,9 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import string
 
-nltk.download('punkt')
 # Ensure the required NLTK resources are downloaded
 try:
-    nltk.download('punkt_tab', quiet=True)
+    nltk.download('punkt', quiet=True)
     nltk.download('stopwords', quiet=True)
 except Exception as e:
     st.error(f"Error downloading NLTK resources: {e}")
@@ -37,8 +37,14 @@ def transform_text(text):
 try:
     tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
     model = pickle.load(open('model.pkl', 'rb'))
+    
+    # Check if the vectorizer is fitted by checking for 'idf_' attribute
+    if not hasattr(tfidf, 'idf_'):
+        raise ValueError("TF-IDF vectorizer is not fitted.")
 except FileNotFoundError:
     st.error("Required files (vectorizer.pkl, model.pkl) are missing!")
+except ValueError as e:
+    st.error(f"Error: {e}")
 
 # Streamlit app
 st.title("📩 Email/SMS Spam Classifier")
