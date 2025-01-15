@@ -1,0 +1,6 @@
+python
+nltk
+pandas
+numpy
+streamlit
+sklearn
