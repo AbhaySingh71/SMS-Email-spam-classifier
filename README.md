@@ -24,7 +24,7 @@ The **SMS/Email Spam Classifier** is a machine learning-based application design
 ## Installation
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/sms-email-spam-classifier.git
+    git clone https://github.com/abhaysingh71/sms-email-spam-classifier.git
     cd sms-email-spam-classifier
     ```
 
