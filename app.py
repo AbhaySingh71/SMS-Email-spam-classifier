@@ -7,6 +7,7 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import string
 
+nltk.download('punkt')
 # Ensure the required NLTK resources are downloaded
 try:
     nltk.download('punkt_tab', quiet=True)
